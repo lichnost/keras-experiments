@@ -1,4 +1,3 @@
-
 import os
 from os.path import isdir
 from os import listdir
@@ -31,7 +30,7 @@ def load_data(path, size, y_data_parser, as_gray=True):
     files_tokens = np.array(list(map(lambda p: np.array(list(map(lambda v: int(v), p.replace('.png', '').split('_')))),
                                      files)))
     x_data = np.array([imageio.imread(path + "/" + p, as_gray=as_gray) for p in files])
-    x_data = x_data.reshape([x.shape[0], x.shape[1], x.shape[2], 1 if as_gray else 3])
+    x_data = x_data.reshape([x_data.shape[0], x_data.shape[1], x_data.shape[2], 1 if as_gray else 3])
     y_data = y_data_parser(files_tokens, size)
 
     del files, files_tokens
